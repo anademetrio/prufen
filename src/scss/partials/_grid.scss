@@ -1,0 +1,258 @@
+@import "grid-variables";
+@import "grid-mixins";
+
+
+//Floats
+.fl-right {
+  float: right;
+}
+
+.fl-left {
+  float: left;
+}
+
+.row {
+  @include row();
+}
+
+.row.reverse {
+  @include row-reverse();
+}
+
+.row.natural-height {
+  @include row-natural-height();
+}
+
+.row.flex-column {
+  @include row-flex-column();
+}
+
+.col {
+  @include col();
+}
+
+.col.reverse {
+  @include col-reverse();
+}
+
+.first {
+  order: -1;
+}
+
+.last {
+  order: 1;
+}
+
+.align-start {
+  align-self: flex-start;
+}
+
+.align-end {
+  align-self: flex-end;
+}
+
+.align-center {
+  align-self: center;
+}
+
+.align-baseline {
+  align-self: baseline;
+}
+
+.align-stretch {
+  align-self: stretch;
+}
+
+.container {
+  width: 100%;
+  max-width: $md-max;
+
+  &.xs {
+    max-width: $xs-max;
+  }
+
+  &.sm {
+    max-width: $sm-max;
+  }
+
+  &.md {
+    max-width: $md-max;
+  }
+
+  &.lg {
+    max-width: $lg-max;
+  }
+
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: $gutter;
+  padding-left: $gutter;
+
+  &.fluid {
+    max-width: unset;
+  }
+
+  >.row {
+    margin-left: -#{$gutter};
+    margin-right: -#{$gutter};
+  }
+  &.flex-column{
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+// Mixin to run inside of for loop - creates col/breakpoint classes
+@mixin col-factory($thisPrefix) {
+  .col-#{$thisPrefix} {
+    box-sizing: border-box;
+    flex-grow: 1;
+    flex-basis: 0;
+    max-width: 100%;
+    padding: $gutter;
+  }
+
+  @for $i from 1 through $grid-columns {
+    .col-#{$thisPrefix}-#{$i} {
+      box-sizing: border-box;
+      flex-basis: 100% / $grid-columns * $i;
+      max-width: 100% / $grid-columns * $i;
+      padding: $gutter;
+    }
+
+    .col-#{$thisPrefix}-offset-#{$i} {
+      margin-left: 100% / $grid-columns * $i;
+    }
+  }
+
+  .row.start-#{$thisPrefix} {
+    justify-content: flex-start;
+  }
+
+  .row.center-#{$thisPrefix} {
+    justify-content: center;
+  }
+
+  .row.end-#{$thisPrefix} {
+    justify-content: flex-end;
+  }
+
+  .row.top-#{$thisPrefix} {
+    align-items: flex-start;
+  }
+
+  .row.middle-#{$thisPrefix} {
+    align-items: center;
+  }
+
+  .row.bottom-#{$thisPrefix} {
+    align-items: flex-end;
+  }
+
+  .row.around-#{$thisPrefix} {
+    justify-content: space-around;
+  }
+
+  .row.between-#{$thisPrefix} {
+    justify-content: space-between;
+  }
+
+  .first-#{$thisPrefix} {
+    order: -1;
+  }
+
+  .last-#{$thisPrefix} {
+    order: 1;
+  }
+}
+
+// Mixin to run inside of for loop - creates col/breakpoint classes
+
+@for $i from 1 through length($breakpoint-up-prefixes) {
+  $thisPrefix: nth($breakpoint-up-prefixes, $i);
+
+  @if $thisPrefix=="xs" {
+    @include col-factory($thisPrefix);
+  }
+
+  @else if $thisPrefix=="sm" {
+    @media #{$breakpoint-sm-up} {
+      @include col-factory($thisPrefix);
+    }
+  }
+
+  @else if $thisPrefix=="md" {
+    @media #{$breakpoint-md-up} {
+      @include col-factory($thisPrefix);
+    }
+  }
+
+  @else if $thisPrefix=="lg" {
+    @media #{$breakpoint-lg-up} {
+      @include col-factory($thisPrefix);
+    }
+  }
+
+  @else if $thisPrefix=="xl" {
+    @media #{$breakpoint-xl-up} {
+      @include col-factory($thisPrefix);
+    }
+  }
+}
+
+.gutter-sm [class*="col-"] {
+  padding-left: #{$gutter / 2} !important;
+  padding-right: #{$gutter / 2} !important;
+  padding-top: #{$gutter / 2} !important;
+  padding-bottom: #{$gutter / 2} !important;
+}
+
+.gutter-lg [class*="col-"] {
+  padding-left: #{$gutter * 1.5} !important;
+  padding-right: #{$gutter * 1.5} !important;
+  padding-top: #{$gutter * 1.5} !important;
+  padding-bottom: #{$gutter * 1.5} !important;
+}
+
+.no-gutter [class*="col-"] {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+$grid: ('xs': $breakpoint-xs-up,
+  'sm': $breakpoint-sm-up,
+  'md': $breakpoint-md-up,
+  'lg': $breakpoint-lg-up,
+  'xl': $breakpoint-xl-up);
+
+@each $name,
+$val in $grid {
+  @media #{$val} {
+    .col-#{$name}-auto {
+      flex-basis: auto;
+      max-width: unset;
+      min-width: unset;
+    }
+  }
+}
+
+
+@each $name,
+$val in $grid {
+  @media #{$val} {
+    .order-#{$name}-first {
+      order: -1;
+    }
+
+    .order-#{$name}-last {
+      order: 1;
+    }
+  }
+}
+
+.flex-xs-column {
+  @media #{$breakpoint-xs-only} {
+    display: flex;
+    flex-direction: column;
+  }
+}

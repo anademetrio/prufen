@@ -1,0 +1,83 @@
+$spacer:     1rem;
+$spacer-x:   $spacer;
+$spacer-y:   $spacer;
+$spacers: (
+  1: (
+    x:   $spacer-x,
+    y:   $spacer-y
+  ),
+  2: (
+    x:   calc($spacer-x * 1.5),
+    y:   calc($spacer-y * 1.5)
+  ),
+  3: (
+    x:   calc($spacer-x * 2),
+    y:   calc($spacer-y * 2)
+  ),
+  4: (
+    x:   calc($spacer-x * 3.5),
+    y:   calc($spacer-y * 3.5)
+  ),
+  5: (
+    x:   calc($spacer-x * 4),
+    y:   calc($spacer-y * 4)
+  ),
+  6: (
+    x:   calc($spacer-x * 4.5),
+    y:   calc($spacer-y * 4.5)
+  ),
+  7: (
+    x:   calc($spacer-x * 5),
+    y:   calc($spacer-y * 5)
+  ),
+  8: (
+    x:   calc($spacer-x * 5.5),
+    y:   calc($spacer-y * 5.5)
+  ),
+  9: (
+    x:   calc($spacer-y * 6)
+  ),
+  10: (
+    x:   calc($spacer-x * 7),
+    y:   calc($spacer-y * 7)
+  ),
+  0: (
+    x:   0,
+    y:   0
+  ),
+  xs: (
+    x:   calc($spacer-x * 0.25),
+    y:   calc($spacer-y * 0.25)
+  ),
+  sm: (
+    x:   calc($spacer-x * 0.5),
+    y:   calc($spacer-y * 0.5)
+  ),
+  h: (
+    x:   calc($spacer-x * 0.5),
+    y:   calc($spacer-y * 0.5)
+  )
+);
+
+@mixin spacing() {
+    @each $prop, $abbrev in (margin: m, padding: p) {
+      @each $size, $lengths in $spacers {
+        $length-x:   map-get($lengths, x);
+        $length-y:   map-get($lengths, y);
+
+        .#{$abbrev}-#{$size} { #{$prop}: $length-y $length-x !important; } // a = All sides
+        .#{$abbrev}x-#{$size} { #{$prop}-left: $length-x !important; #{$prop}-right: $length-x !important; } // margin x
+        .#{$abbrev}y-#{$size} { #{$prop}-top: $length-y !important; #{$prop}-bottom: $length-y !important; } // margin y
+        .#{$abbrev}t-#{$size} { #{$prop}-top: $length-y !important; }
+        .#{$abbrev}r-#{$size} { #{$prop}-right: $length-x !important; }
+        .#{$abbrev}b-#{$size} { #{$prop}-bottom: $length-y !important; }
+        .#{$abbrev}l-#{$size} { #{$prop}-left: $length-x !important; }
+      }
+      .#{$abbrev}l-auto { #{$prop}-left: auto !important; }
+      .#{$abbrev}r-auto { #{$prop}-right: auto !important; }
+      .#{$abbrev}x-auto { #{$prop}-right: auto !important; #{$prop}-left: auto !important; } 
+      .#{$abbrev}-auto { #{$prop}: auto !important;} 
+    }
+}
+
+@include spacing;

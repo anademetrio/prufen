@@ -1,0 +1,222 @@
+/*####################################################
+DIVIDERS
+####################################################*/
+
+.line-divider{
+    border: none;
+    border-top: 1px solid var(--color-border-30);
+    margin: 0;
+}
+
+@media (max-width: 450px){
+    .smartphone-hide{
+        display: none !important;
+    }
+}
+
+/*####################################################
+POSITION
+####################################################*/
+
+.p-relative{
+    position: relative !important;
+}
+
+.p-absolute {
+    position: absolute;
+}
+
+/*####################################################
+FLEX UTILS
+####################################################*/
+
+.d-flex {
+    display: flex !important;
+}
+
+.flex-column {
+    flex-direction: column !important;
+}
+
+.flex-grow-0 {
+    flex-grow: 0 !important;
+}
+
+.flex-grow-1 {
+    flex-grow: 1 !important;
+}
+
+.flex-shrink-0 {
+    flex-shrink: 0 !important;
+}
+
+.flex-shrink-1 {
+    flex-shrink: 1 !important;
+}
+
+.flex-wrap {
+    flex-wrap: wrap !important;
+}
+
+.align-self-start {
+    align-self: flex-start !important;
+}
+
+.align-self-center {
+    align-self: center !important;
+}
+
+.align-self-end {
+    align-self: flex-end !important;
+}
+
+.align-self-stretch {
+    align-self: stretch !important;
+}
+
+.align-items-center {
+    align-items: center !important;
+}
+
+.align-items-start {
+    align-items: flex-start !important;
+}
+
+.align-items-stretch {
+    align-items: stretch !important;
+}
+
+.align-items-end {
+    align-items: flex-end !important;
+}
+
+
+.justify-start {
+    justify-content: flex-start !important;
+}
+
+.justify-end {
+    justify-content: flex-end !important;
+}
+
+.justify-between {
+    justify-content: space-between !important;
+}
+
+.justify-center {
+    justify-content: center !important;
+}
+
+
+.uppercase {
+    text-transform: uppercase;
+}
+  
+.capitalize {
+    text-transform: capitalize;
+}
+
+
+.gap-xs {
+    gap: .25rem !important;
+}
+
+.gap-sm {
+    gap: .5rem !important;
+}
+
+.gap-md {
+    gap: 1rem !important;
+}
+
+.gap-lg {
+    gap: 1.5rem !important;
+}
+
+.gap-xl {
+    gap: 2rem !important;
+}
+
+.gap-xxl {
+    gap: 3rem !important;
+}
+
+/*####################################################
+TRUNCATE
+####################################################*/
+
+.truncate {
+    overflow: hidden;
+    display: -webkit-box;
+
+    &-after {
+        position: relative;
+        -webkit-box-orient: vertical;
+        @for $i from 1 to 15 {
+            &.lines-#{$i}{
+                -webkit-line-clamp: #{$i};
+                max-height: $i + 1em;
+            }
+        }
+        
+    }
+}
+
+/*####################################################
+BUTTON SWITCH
+####################################################*/
+.btn-switch{
+    display: flex;
+    gap: .5rem;
+    margin: 2rem 0;
+    justify-content: center;
+    input{
+        display:none;
+        &:checked + label{
+            opacity: 1;
+            background-color: var(--color-primary-default);
+            color: var(--color-white);
+            border-color: var(--color-primary-default);
+        }
+    }
+    label{
+        border-radius: 0.5rem;
+        border: 1px solid var(--color-white);
+        color: var(--color-white);
+        font-weight: 600;
+        padding: .5rem 1rem;
+        opacity: .5;
+        transition: .3s;
+        cursor: pointer;
+    }
+}
+
+/*####################################################
+COLUMNS
+####################################################*/
+
+.columns-2{
+    columns: 2;
+    column-gap: .5rem;
+    @media (max-width: 450px){
+        columns: 1;
+    }
+}
+
+/*####################################################
+OPACITY
+####################################################*/
+
+$op : 0;
+
+@while $op <=100 {
+    .opacity-#{$op} {
+        opacity: #{$op/100};
+    }
+
+    $op: $op+10;
+}
+
+/*####################################################
+BG COLORS
+####################################################*/
