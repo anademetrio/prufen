@@ -1,0 +1,143 @@
+body,
+input,
+select,
+textarea {
+    font-family: "SF Pro Display";
+}
+
+h1,
+.h1 {
+    font-size: 64px;
+    font-weight: bold;
+    line-height: 1.2;
+}
+
+h2,
+.h2 {
+    font-size: 40px;
+    font-weight: bold;
+    line-height: 1.2;
+}
+
+h3,
+.h3 {
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 1.2;
+}
+
+h4,
+.h4 {
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 1.2;
+}
+
+h5,
+.h5 {
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 1.2;
+}
+
+h6,
+.h6 {
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 1.2;
+}
+
+.text-md {
+    font-size: 14px;
+}
+
+.text-sm {
+    font-size: 12px;
+}
+
+strong,
+b {
+    font-size: bold;
+}
+
+//Text Align
+
+.text-right {
+    text-align: right !important;
+}
+
+.text-left {
+    text-align: left !important;
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+//Text Styles
+
+.text-uppercase {
+    text-transform: uppercase !important;
+}
+
+.text-italic {
+    font-style: italic !important;
+}
+
+/*####################################################
+TEXT COLORS
+####################################################*/
+
+.text-color-white {
+    color: white !important;
+}
+
+@each $name in $colors {
+    .text-color-#{$name}-50 {
+        color: var(--#{$name}--50) !important;
+    }
+
+    @for $i from 1 through 9 {
+        $value: $i * 100;
+        .text-color-#{$name}-#{$value} {
+            color: var(--#{$name}--#{$value}) !important;
+        }
+    }
+
+    .text-color-#{$name} {
+        color: var(--#{$name}--950) !important;
+    }
+}
+
+
+/*####################################################
+FONT-WEIGHT
+####################################################*/
+
+.font-weight-100 {
+    font-weight: 100 !important;
+}
+
+.font-weight-200 {
+    font-weight: 200 !important;
+}
+
+.font-weight-300 {
+    font-weight: 300 !important;
+}
+
+.font-weight-400 {
+    font-weight: 400 !important;
+}
+
+.font-weight-600 {
+    font-weight: 600 !important;
+}
+
+.font-weight-700 {
+    font-weight: 700 !important;
+}
+
+.font-weight-900 {
+    font-weight: 900 !important;
+}

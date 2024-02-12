@@ -35,7 +35,8 @@ $spacers: (
     y:   calc($spacer-y * 5.5)
   ),
   9: (
-    x:   calc($spacer-y * 6)
+    x:   calc($spacer-x * 6),
+    y:   calc($spacer-y * 6)
   ),
   10: (
     x:   calc($spacer-x * 7),

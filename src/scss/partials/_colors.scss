@@ -91,14 +91,6 @@
     --secundary--800: #1A5555;
     --secundary--900: #1A4747;
     --secundary--950: #0C3436;
-
-    /* Text-size styles */
-   --heading--h1: 4rem;
-   --heading--h2: 2.5rem;
-   --heading--h3: 2rem;
-   --heading--h4: 1.5rem;
-   --heading--h5: 1.12rem;
-   --text--lg: 1rem;
-   --text--md: 0.88rem;
-   --text--sm: 0.75rem;
 }
+
+$colors: ('primary', 'secondary', 'neutral', 'info', 'error', 'warning')

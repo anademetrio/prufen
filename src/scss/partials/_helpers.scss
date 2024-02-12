@@ -4,7 +4,7 @@ DIVIDERS
 
 .line-divider{
     border: none;
-    border-top: 1px solid var(--color-border-30);
+    border-top: 1px solid var(--background--off-white);
     margin: 0;
 }
 
@@ -12,6 +12,16 @@ DIVIDERS
     .smartphone-hide{
         display: none !important;
     }
+}
+
+.fill-height {
+    height: 100vh;
+}
+
+.full-img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
 }
 
 /*####################################################
@@ -163,35 +173,6 @@ TRUNCATE
 }
 
 /*####################################################
-BUTTON SWITCH
-####################################################*/
-.btn-switch{
-    display: flex;
-    gap: .5rem;
-    margin: 2rem 0;
-    justify-content: center;
-    input{
-        display:none;
-        &:checked + label{
-            opacity: 1;
-            background-color: var(--color-primary-default);
-            color: var(--color-white);
-            border-color: var(--color-primary-default);
-        }
-    }
-    label{
-        border-radius: 0.5rem;
-        border: 1px solid var(--color-white);
-        color: var(--color-white);
-        font-weight: 600;
-        padding: .5rem 1rem;
-        opacity: .5;
-        transition: .3s;
-        cursor: pointer;
-    }
-}
-
-/*####################################################
 COLUMNS
 ####################################################*/
 
@@ -220,3 +201,22 @@ $op : 0;
 /*####################################################
 BG COLORS
 ####################################################*/
+.bg-color-white {
+    background-color: white !important;
+}
+@each $name in $colors {
+    .bg-color-#{$name}-50 {
+        background-color: var(--#{$name}--50) !important;
+    }
+
+    @for $i from 1 through 9 {
+        $value: $i * 100;
+        .bg-color-#{$name}-#{$value} {
+            background-color: var(--#{$name}--#{$value}) !important;
+        }
+    }
+
+    .bg-color-#{$name} {
+        background-color: var(--#{$name}--950) !important;
+    }
+}

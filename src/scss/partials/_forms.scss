@@ -1,0 +1,28 @@
+/*####################################################
+BUTTON SWITCH
+####################################################*/
+.btn-switch{
+    display: flex;
+    gap: .5rem;
+    margin: 2rem 0;
+    justify-content: center;
+    input{
+        display:none;
+        &:checked + label{
+            opacity: 1;
+            background-color: var(--color-primary-default);
+            color: var(--color-white);
+            border-color: var(--color-primary-default);
+        }
+    }
+    label{
+        border-radius: 0.5rem;
+        border: 1px solid var(--color-white);
+        color: var(--color-white);
+        font-weight: 600;
+        padding: .5rem 1rem;
+        opacity: .5;
+        transition: .3s;
+        cursor: pointer;
+    }
+}
